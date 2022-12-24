@@ -1,7 +1,4 @@
-// ignore_for_file: unused_element, unused_local_variable, unnecessary_this, no_leading_underscores_for_local_identifiers
-
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _openGallery() async {
+    openGallery() async {
       XFile? picture =
           (await ImagePicker().pickImage(source: ImageSource.gallery));
       setState(() {
@@ -26,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     }
 
-    _openCamera() async {
+    openCamera() async {
       XFile? picture =
           (await ImagePicker().pickImage(source: ImageSource.camera));
       setState(() {
@@ -35,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     }
 
-    Widget _imageView() {
+    Widget imageView() {
       if (imageFile == null) {
         return const Text('No image Selected');
       } else {
@@ -56,20 +53,20 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             IconButton(
               onPressed: () {
-                _openCamera();
+                openCamera();
               },
               icon: const Icon(Icons.camera_alt_outlined),
               iconSize: 50,
             ),
             IconButton(
                 onPressed: () {
-                  _openGallery();
+                  openGallery();
                 },
                 icon: const Icon(Icons.folder_open_outlined),
                 iconSize: 50
                 ),
             SizedBox(
-                height: 350, width: 450, child: Center(child: _imageView(),
+                height: 350, width: 450, child: Center(child: imageView(),
                 ),
               ),
           ],
